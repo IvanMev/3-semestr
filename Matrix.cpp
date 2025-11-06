@@ -90,26 +90,6 @@ namespace miit::algebra
     }
 
     template<typename T>
-    T& Matrix<T>::operator*()
-    {
-        if (size == 0)
-        {
-            throw std::runtime_error("Matrix is empty");
-        }
-        return data[0];
-    }
-
-    template<typename T>
-    const T& Matrix<T>::operator*() const
-    {
-        if (size == 0)
-        {
-            throw std::runtime_error("Matrix is empty");
-        }
-        return data[0];
-    }
-
-    template<typename T>
     Matrix<T> Matrix<T>::operator<<(size_t shift) const
     {
         Matrix result(size);

@@ -11,6 +11,6 @@ namespace miit::algebra
 
     public:
         IStreamGenerator(std::istream& in = std::cin);
-        int generate() override;
+        int generate() const override;
     };
 }

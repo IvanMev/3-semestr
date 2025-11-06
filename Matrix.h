@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <iostream>
 #include <stdexcept>
+#include <string>
 
 namespace miit::algebra
 {
@@ -29,8 +30,6 @@ namespace miit::algebra
         // Операторы доступа
         T& operator[](size_t index);
         const T& operator[](size_t index) const;
-        T& operator*();
-        const T& operator*() const;
 
         // Операторы сдвига
         Matrix operator<<(size_t shift) const;
