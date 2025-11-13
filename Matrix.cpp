@@ -167,7 +167,6 @@ namespace miit::algebra
         }
     }
 
-    // Явная инстанциация для часто используемых типов
     template class Matrix<int>;
     template class Matrix<double>;
 }

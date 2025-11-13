@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include "Matrix.h"
+#pragma once
+#include "Matrix.h"
 #include "Generator.h"
 
 namespace miit::algebra
@@ -16,8 +18,11 @@ namespace miit::algebra
 
         virtual void SolveTask() = 0;
 
-        Matrix<int> get_matrix() const;
-        void set_matrix(const Matrix<int>& new_matrix);
+        Matrix<int>& get_matrix() { return matrix; }
+        const Matrix<int>& get_matrix() const { return matrix; }
+        size_t get_size() const { return matrix.get_size(); }
+
+    protected:
         void fill_matrix();
     };
 }

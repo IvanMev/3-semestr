@@ -3,13 +3,13 @@
 namespace miit::algebra
 {
     RandomGenerator::RandomGenerator(int min, int max)
-        : distribution(std::uniform_int_distribution<int>(min, max))
+        : min_val(min), max_val(max), generator(rd())
     {
-        generator = std::mt19937(std::random_device{}());
     }
 
     int RandomGenerator::generate() const
     {
+        std::uniform_int_distribution<int> distribution(min_val, max_val);
         return distribution(generator);
     }
 }

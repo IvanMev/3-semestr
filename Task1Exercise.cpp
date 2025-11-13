@@ -15,17 +15,18 @@ namespace miit::algebra
     void Task1Exercise::replaceLastMultipleOfThree()
     {
         int last_index = -1;
-        for (size_t i = 0; i < matrix.get_size(); ++i)
+        auto& mat = get_matrix();
+        for (size_t i = 0; i < mat.get_size(); ++i)
         {
-            if (matrix[i] % 3 == 0)
+            if (mat[i] % 3 == 0)
             {
-                last_index = i;
+                last_index = static_cast<int>(i);
             }
         }
 
         if (last_index != -1)
         {
-            matrix[last_index] = 0;
+            mat[last_index] = 0;
         }
     }
 }

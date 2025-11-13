@@ -25,38 +25,91 @@ public:
     }
 };
 
-void test_task1_exercise()
+void test_task1_basic()
 {
-    std::cout << "Test: Task1Exercise... ";
     TestGenerator gen({ 3, 6, 9, 12, 15 });
     Task1Exercise exercise(5, &gen);
-    exercise.fill_matrix();
-
     exercise.SolveTask();
-    Matrix<int> result = exercise.get_matrix();
 
-    assert(result[4] == 0);
+    Matrix<int> result = exercise.get_matrix();
+    assert(result[4] == 0); 
     std::cout << "PASS" << std::endl;
 }
 
-void test_task2_exercise()
+void test_task1_no_multiple_of_three()
 {
-    std::cout << "Test: Task2Exercise... ";
+    TestGenerator gen({ 1, 2, 4, 5, 7 });
+    Task1Exercise exercise(5, &gen);
+    exercise.SolveTask();
+
+    Matrix<int> result = exercise.get_matrix();
+    assert(result[0] == 1);
+    assert(result[1] == 2);
+    assert(result[2] == 4);
+    assert(result[3] == 5);
+    assert(result[4] == 7);
+    std::cout << "PASS" << std::endl;
+}
+
+void test_task1_multiple_at_different_positions()
+{
+    TestGenerator gen({ 1, 3, 2, 6, 4 });
+    Task1Exercise exercise(5, &gen);
+    exercise.SolveTask();
+
+    Matrix<int> result = exercise.get_matrix();
+    assert(result[3] == 0); 
+    std::cout << "PASS" << std::endl;
+}
+
+void test_task2_basic()
+{
     TestGenerator gen({ 1, 2, 3, 4, 5 });
     Task2Exercise exercise(5, &gen, 999);
-    exercise.fill_matrix();
-
     exercise.SolveTask();
-    Matrix<int> result = exercise.get_matrix();
 
-    assert(result[1] == 999);
-    assert(result[3] == 999);
+    Matrix<int> result = exercise.get_matrix();
+    assert(result[1] == 999); 
+    assert(result[3] == 999); 
+    assert(result[0] == 1);   
+    assert(result[2] == 3);   
+    assert(result[4] == 5);   
     std::cout << "PASS" << std::endl;
 }
 
-void test_task3_exercise()
+void test_task2_no_even_elements()
 {
-    std::cout << "Test: Task3Exercise... ";
+    TestGenerator gen({ 1, 3, 5, 7, 9 });
+    Task2Exercise exercise(5, &gen, 999);
+    exercise.SolveTask();
+
+    Matrix<int> result = exercise.get_matrix();
+    assert(result[0] == 1);
+    assert(result[1] == 3);
+    assert(result[2] == 5);
+    assert(result[3] == 7);
+    assert(result[4] == 9);
+    std::cout << "PASS" << std::endl;
+}
+
+void test_task2_all_even_elements()
+{
+    TestGenerator gen({ 2, 4, 6, 8, 10 });
+    Task2Exercise exercise(5, &gen, 777);
+    exercise.SolveTask();
+
+    Matrix<int> result = exercise.get_matrix();
+    assert(result[0] == 777);
+    assert(result[1] == 777);
+    assert(result[2] == 777);
+    assert(result[3] == 777);
+    assert(result[4] == 777);
+    std::cout << "PASS" << std::endl;
+}
+
+void test_task3_basic()
+{
+    std::cout << "Test: Task3 Basic... ";
     Matrix<int> P(6);
     TestGenerator gen({ 1, 2, 3, 4, 5, 6 });
     P.fill(gen);
@@ -64,16 +117,45 @@ void test_task3_exercise()
     Task3Exercise exercise(0, nullptr);
     Matrix<int> M = exercise.createArrayM(P);
 
-    assert(M[0] == 0);
-    assert(M[5] == 0);
-    assert(M[3] == 16);
-    assert(M[1] == 4);
+    assert(M[0] == 0);  
+    assert(M[5] == 0);   
+    assert(M[1] == 4); 
+    assert(M[2] == 9);  
+    assert(M[3] == 16); 
+    assert(M[4] == 25);  
+    std::cout << "PASS" << std::endl;
+}
+
+void test_task3_small_array()
+{
+
+    Matrix<int> P(2);
+    TestGenerator gen({ 1, 2 });
+    P.fill(gen);
+
+    Task3Exercise exercise(0, nullptr);
+    Matrix<int> M = exercise.createArrayM(P);
+
+    assert(M[0] == 0);   
+    assert(M[1] == 0);   
+    std::cout << "PASS" << std::endl;
+}
+
+void test_task3_single_element()
+{
+    Matrix<int> P(1);
+    TestGenerator gen({ 5 });
+    P.fill(gen);
+
+    Task3Exercise exercise(0, nullptr);
+    Matrix<int> M = exercise.createArrayM(P);
+
+    assert(M[0] == 0); 
     std::cout << "PASS" << std::endl;
 }
 
 void test_matrix_operations()
 {
-    std::cout << "Test: MatrixOperations... ";
     Matrix<int> mat(4);
     TestGenerator gen({ 1, 2, 3, 4 });
     mat.fill(gen);
@@ -92,23 +174,78 @@ void test_matrix_operations()
     std::cout << "PASS" << std::endl;
 }
 
+void test_matrix_creation_and_access()
+{
+    Matrix<int> mat(3);
+    TestGenerator gen({ 10, 20, 30 });
+    mat.fill(gen);
+
+    assert(mat.get_size() == 3);
+    assert(mat[0] == 10);
+    assert(mat[1] == 20);
+    assert(mat[2] == 30);
+
+    mat[1] = 25;
+    assert(mat[1] == 25);
+    std::cout << "PASS" << std::endl;
+}
+
+void test_matrix_string_conversion()
+{
+    Matrix<int> mat(3);
+    TestGenerator gen({ 1, 2, 3 });
+    mat.fill(gen);
+
+    std::string str = mat.to_string();
+    assert(str == "[1, 2, 3]");
+    std::cout << "PASS" << std::endl;
+}
+
+void test_matrix_resize()
+{
+    Matrix<int> mat(3);
+    TestGenerator gen({ 1, 2, 3 });
+    mat.fill(gen);
+
+    mat.resize(5);
+    assert(mat.get_size() == 5);
+
+    mat.resize(2);
+    assert(mat.get_size() == 2);
+    std::cout << "PASS" << std::endl;
+}
+
+void test_task2_k_getter_setter()
+{
+    TestGenerator gen({ 1, 2, 3 });
+    Task2Exercise exercise(3, &gen, 100);
+
+    assert(exercise.get_K() == 100);
+
+    exercise.set_K(200);
+    assert(exercise.get_K() == 200);
+    std::cout << "PASS" << std::endl;
+}
+
 int main()
 {
-    try
-    {
-        std::cout << "=== Запуск модульных тестов ===" << std::endl;
+        test_task1_basic();
+        test_task1_no_multiple_of_three();
+        test_task1_multiple_at_different_positions();
 
-        test_task1_exercise();
-        test_task2_exercise();
-        test_task3_exercise();
+        test_task2_basic();
+        test_task2_no_even_elements();
+        test_task2_all_even_elements();
+        test_task2_k_getter_setter();
+
+        test_task3_basic();
+        test_task3_small_array();
+        test_task3_single_element();
+
         test_matrix_operations();
+        test_matrix_creation_and_access();
+        test_matrix_string_conversion();
+        test_matrix_resize();
 
-        std::cout << "=== Все тесты успешно пройдены! ===" << std::endl;
         return 0;
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Тест провален: " << e.what() << std::endl;
-        return 1;
-    }
 }

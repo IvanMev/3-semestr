@@ -14,12 +14,12 @@ namespace miit::algebra
 
     void Task2Exercise::insertKAfterEvenElements()
     {
-        // Упрощенная реализация - просто заменяем четные элементы на K
-        for (size_t i = 0; i < matrix.get_size(); ++i)
+        auto& mat = get_matrix();
+        for (size_t i = 0; i < mat.get_size(); ++i)
         {
-            if (matrix[i] % 2 == 0)
+            if (mat[i] % 2 == 0)
             {
-                matrix[i] = K;
+                mat[i] = K;
             }
         }
     }

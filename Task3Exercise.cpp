@@ -10,7 +10,6 @@ namespace miit::algebra
 
     void Task3Exercise::SolveTask()
     {
-        // Для Task3 требуется внешний массив P, поэтому оставляем пустым
     }
 
     Matrix<int> Task3Exercise::createArrayM(const Matrix<int>& P)

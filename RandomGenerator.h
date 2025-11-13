@@ -7,7 +7,9 @@ namespace miit::algebra
     class RandomGenerator : public Generator
     {
     private:
-        std::uniform_int_distribution<int> distribution;
+        int min_val;
+        int max_val;
+        mutable std::random_device rd;
         mutable std::mt19937 generator;
 
     public:

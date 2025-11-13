@@ -13,38 +13,35 @@ namespace miit::algebra
         size_t size;
 
     public:
-        // Конструкторы
         Matrix();
         explicit Matrix(size_t size);
         Matrix(size_t size, const T& value);
         Matrix(const Matrix& other);
         Matrix(Matrix&& other) noexcept;
 
-        // Деструктор
         ~Matrix();
 
-        // Операторы присваивания
         Matrix& operator=(const Matrix& other);
         Matrix& operator=(Matrix&& other) noexcept;
 
-        // Операторы доступа
         T& operator[](size_t index);
         const T& operator[](size_t index) const;
 
-        // Операторы сдвига
         Matrix operator<<(size_t shift) const;
         Matrix operator>>(size_t shift) const;
 
-        // Методы
         size_t get_size() const;
         std::string to_string() const;
         void resize(size_t new_size);
 
-        // Заполнение массива
+        T* get_data() { return data; }
+        const T* get_data() const { return data; }
+
         template<typename Generator>
         void fill(Generator& gen);
 
     private:
         void copy_data(const T* source, T* destination, size_t count);
     };
+
 }
