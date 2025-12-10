@@ -14,8 +14,8 @@ namespace miit::algebra
 
     public:
         Matrix();
-        explicit Matrix(size_t size);
-        Matrix(size_t size, const T& value);
+        explicit Matrix(const size_t size);
+        Matrix(const size_t size, const T& value);
         Matrix(const Matrix& other);
         Matrix(Matrix&& other) noexcept;
 
@@ -24,11 +24,11 @@ namespace miit::algebra
         Matrix& operator=(const Matrix& other);
         Matrix& operator=(Matrix&& other) noexcept;
 
-        T& operator[](size_t index);
-        const T& operator[](size_t index) const;
+        T& operator[](const size_t index);
+        const T& operator[](const size_t index) const;
 
-        Matrix operator<<(size_t shift) const;
-        Matrix operator>>(size_t shift) const;
+        Matrix operator<<(const size_t shift) const;
+        Matrix operator>>(const size_t shift) const;
 
         size_t get_size() const;
         std::string to_string() const;

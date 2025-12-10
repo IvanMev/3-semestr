@@ -15,10 +15,9 @@ namespace miit::algebra
     void Task1Exercise::replaceLastMultipleOfThree()
     {
         int last_index = -1;
-        auto& mat = get_matrix();
-        for (size_t i = 0; i < mat.get_size(); ++i)
+        for (size_t i = 0; i < matrix.get_size(); ++i)
         {
-            if (mat[i] % 3 == 0)
+            if (matrix[i] % 3 == 0)
             {
                 last_index = static_cast<int>(i);
             }
@@ -26,7 +25,7 @@ namespace miit::algebra
 
         if (last_index != -1)
         {
-            mat[last_index] = 0;
+            matrix[last_index] = 0;
         }
     }
 }

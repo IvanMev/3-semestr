@@ -1,4 +1,5 @@
 ﻿#include "Matrix.h"
+#include "Generator.h"
 #include <sstream>
 
 namespace miit::algebra
@@ -169,4 +170,6 @@ namespace miit::algebra
 
     template class Matrix<int>;
     template class Matrix<double>;
+    
+    template void Matrix<int>::fill<Generator>(Generator&);
 }

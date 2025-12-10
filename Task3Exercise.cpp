@@ -3,8 +3,8 @@
 
 namespace miit::algebra
 {
-    Task3Exercise::Task3Exercise(size_t size, Generator* gen)
-        : Exercise(size, gen)
+    Task3Exercise::Task3Exercise(size_t size)
+        : Exercise(size, nullptr)
     {
     }
 

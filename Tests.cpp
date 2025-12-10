@@ -31,7 +31,7 @@ void test_task1_basic()
     Task1Exercise exercise(5, &gen);
     exercise.SolveTask();
 
-    Matrix<int> result = exercise.get_matrix();
+    Matrix<int> result = exercise.matrix;
     assert(result[4] == 0); 
     std::cout << "PASS" << std::endl;
 }
@@ -42,7 +42,7 @@ void test_task1_no_multiple_of_three()
     Task1Exercise exercise(5, &gen);
     exercise.SolveTask();
 
-    Matrix<int> result = exercise.get_matrix();
+    Matrix<int> result = exercise.matrix;
     assert(result[0] == 1);
     assert(result[1] == 2);
     assert(result[2] == 4);
@@ -57,7 +57,7 @@ void test_task1_multiple_at_different_positions()
     Task1Exercise exercise(5, &gen);
     exercise.SolveTask();
 
-    Matrix<int> result = exercise.get_matrix();
+    Matrix<int> result = exercise.matrix;
     assert(result[3] == 0); 
     std::cout << "PASS" << std::endl;
 }
@@ -68,7 +68,7 @@ void test_task2_basic()
     Task2Exercise exercise(5, &gen, 999);
     exercise.SolveTask();
 
-    Matrix<int> result = exercise.get_matrix();
+    Matrix<int> result = exercise.matrix;
     assert(result[1] == 999); 
     assert(result[3] == 999); 
     assert(result[0] == 1);   
@@ -83,7 +83,7 @@ void test_task2_no_even_elements()
     Task2Exercise exercise(5, &gen, 999);
     exercise.SolveTask();
 
-    Matrix<int> result = exercise.get_matrix();
+    Matrix<int> result = exercise.matrix;
     assert(result[0] == 1);
     assert(result[1] == 3);
     assert(result[2] == 5);
@@ -98,7 +98,7 @@ void test_task2_all_even_elements()
     Task2Exercise exercise(5, &gen, 777);
     exercise.SolveTask();
 
-    Matrix<int> result = exercise.get_matrix();
+    Matrix<int> result = exercise.matrix;
     assert(result[0] == 777);
     assert(result[1] == 777);
     assert(result[2] == 777);
@@ -114,7 +114,7 @@ void test_task3_basic()
     TestGenerator gen({ 1, 2, 3, 4, 5, 6 });
     P.fill(gen);
 
-    Task3Exercise exercise(0, nullptr);
+    Task3Exercise exercise(0);
     Matrix<int> M = exercise.createArrayM(P);
 
     assert(M[0] == 0);  
@@ -133,7 +133,7 @@ void test_task3_small_array()
     TestGenerator gen({ 1, 2 });
     P.fill(gen);
 
-    Task3Exercise exercise(0, nullptr);
+    Task3Exercise exercise(0);
     Matrix<int> M = exercise.createArrayM(P);
 
     assert(M[0] == 0);   
@@ -147,7 +147,7 @@ void test_task3_single_element()
     TestGenerator gen({ 5 });
     P.fill(gen);
 
-    Task3Exercise exercise(0, nullptr);
+    Task3Exercise exercise(0);
     Matrix<int> M = exercise.createArrayM(P);
 
     assert(M[0] == 0); 
@@ -215,17 +215,6 @@ void test_matrix_resize()
     std::cout << "PASS" << std::endl;
 }
 
-void test_task2_k_getter_setter()
-{
-    TestGenerator gen({ 1, 2, 3 });
-    Task2Exercise exercise(3, &gen, 100);
-
-    assert(exercise.get_K() == 100);
-
-    exercise.set_K(200);
-    assert(exercise.get_K() == 200);
-    std::cout << "PASS" << std::endl;
-}
 
 int main()
 {
@@ -236,7 +225,6 @@ int main()
         test_task2_basic();
         test_task2_no_even_elements();
         test_task2_all_even_elements();
-        test_task2_k_getter_setter();
 
         test_task3_basic();
         test_task3_small_array();
