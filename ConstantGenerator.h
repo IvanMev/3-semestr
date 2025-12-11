@@ -9,10 +9,11 @@ namespace miit::algebra
         int value;
 
     public:
-        ConstantGenerator(int constant_value);
+        ConstantGenerator(const int constant_value);
         int generate() const override;
     };
 }
+
 
 
 
