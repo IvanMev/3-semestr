@@ -20,47 +20,47 @@ namespace CarServiceTests
     public:
         TEST_METHOD(TestRepairService)
         {
-            auto service = std::make_shared<RepairService>("Engine Repair", 500.0, "Engine");
-            Assert::AreEqual(std::string("Engine Repair"), service->getName());
+            auto service = std::make_shared<RepairService>("Ремонт двигателя", 500.0, "Двигатель");
+            Assert::AreEqual(std::string("Ремонт двигателя"), service->getName());
             Assert::AreEqual(500.0, service->getPrice());
-            Assert::AreEqual(std::string("Repair"), service->getServiceType());
-            Assert::AreEqual(std::string("Engine"), service->getRepairType());
+            Assert::AreEqual(std::string("Ремонт"), service->getServiceType());
+            Assert::AreEqual(std::string("Двигатель"), service->getRepairType());
         }
 
         TEST_METHOD(TestPaintingService)
         {
-            auto service = std::make_shared<PaintingService>("Full Paint", 800.0, "Red");
-            Assert::AreEqual(std::string("Full Paint"), service->getName());
+            auto service = std::make_shared<PaintingService>("Полная покраска", 800.0, "Красный");
+            Assert::AreEqual(std::string("Полная покраска"), service->getName());
             Assert::AreEqual(800.0, service->getPrice());
-            Assert::AreEqual(std::string("Painting"), service->getServiceType());
-            Assert::AreEqual(std::string("Red"), service->getColor());
+            Assert::AreEqual(std::string("Покраска"), service->getServiceType());
+            Assert::AreEqual(std::string("Красный"), service->getColor());
         }
 
         TEST_METHOD(TestWashingService)
         {
-            auto service = std::make_shared<WashingService>("Dry Clean", 150.0, true);
-            Assert::AreEqual(std::string("Dry Clean"), service->getName());
+            auto service = std::make_shared<WashingService>("Химчистка", 150.0, true);
+            Assert::AreEqual(std::string("Химчистка"), service->getName());
             Assert::AreEqual(150.0, service->getPrice());
-            Assert::AreEqual(std::string("Washing"), service->getServiceType());
+            Assert::AreEqual(std::string("Мойка"), service->getServiceType());
             Assert::IsTrue(service->isDryCleaningService());
         }
 
         TEST_METHOD(TestTuningService)
         {
-            auto service = std::make_shared<TuningService>("Engine Tune", 600.0, "Performance");
-            Assert::AreEqual(std::string("Engine Tune"), service->getName());
+            auto service = std::make_shared<TuningService>("Тюнинг двигателя", 600.0, "Производительность");
+            Assert::AreEqual(std::string("Тюнинг двигателя"), service->getName());
             Assert::AreEqual(600.0, service->getPrice());
-            Assert::AreEqual(std::string("Tuning"), service->getServiceType());
-            Assert::AreEqual(std::string("Performance"), service->getTuningCategory());
+            Assert::AreEqual(std::string("Тюнинг"), service->getServiceType());
+            Assert::AreEqual(std::string("Производительность"), service->getTuningCategory());
         }
 
         TEST_METHOD(TestServicePolymorphism)
         {
             std::vector<std::shared_ptr<Service>> services;
-            services.push_back(std::make_shared<RepairService>("Repair", 100.0, "Engine"));
-            services.push_back(std::make_shared<PaintingService>("Paint", 200.0, "Blue"));
-            services.push_back(std::make_shared<WashingService>("Wash", 50.0, false));
-            services.push_back(std::make_shared<TuningService>("Tune", 300.0, "Performance"));
+            services.push_back(std::make_shared<RepairService>("Ремонт", 100.0, "Двигатель"));
+            services.push_back(std::make_shared<PaintingService>("Покраска", 200.0, "Синий"));
+            services.push_back(std::make_shared<WashingService>("Мойка", 50.0, false));
+            services.push_back(std::make_shared<TuningService>("Тюнинг", 300.0, "Производительность"));
 
             Assert::AreEqual(4, (int)services.size());
             for (const auto& service : services) {
@@ -85,7 +85,7 @@ namespace CarServiceTests
         TEST_METHOD(TestCarServices)
         {
             auto car = std::make_shared<Car>("ABC123", "Toyota", "Camry", 2020);
-            auto service = std::make_shared<RepairService>("Repair", 100.0, "Engine");
+            auto service = std::make_shared<RepairService>("Ремонт", 100.0, "Двигатель");
             car->addService(service);
             
             auto services = car->getServices();
@@ -121,7 +121,7 @@ namespace CarServiceTests
         TEST_METHOD(TestManagerServices)
         {
             CarServiceManager manager;
-            auto service = std::make_shared<RepairService>("Repair", 100.0, "Engine");
+            auto service = std::make_shared<RepairService>("Ремонт", 100.0, "Двигатель");
             manager.addService(service);
             
             auto services = manager.getAllServices();
@@ -139,4 +139,5 @@ namespace CarServiceTests
         }
     };
 }
+
 

@@ -41,7 +41,7 @@ namespace CarService {
 
     std::string Car::getInfo() const {
         std::ostringstream oss;
-        oss << "Car: " << make << " " << model << " (" << year << "), License: " << licensePlate;
+        oss << "Авто: " << make << " " << model << " (" << year << "), Номер: " << licensePlate;
         return oss.str();
     }
 

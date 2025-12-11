@@ -7,11 +7,11 @@ namespace CarService {
     }
 
     std::string PaintingService::getDescription() const {
-        return "Painting Service: " + name + " (Color: " + color + ", Price: " + std::to_string(price) + ")";
+        return "Услуга покраски: " + name + " (Цвет: " + color + ", Цена: " + std::to_string(price) + ")";
     }
 
     std::string PaintingService::getServiceType() const {
-        return "Painting";
+        return "Покраска";
     }
 
     std::string PaintingService::getColor() const {

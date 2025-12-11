@@ -17,7 +17,7 @@ namespace CarService {
 
     std::string CarServiceManager::getServicesList() const {
         std::ostringstream oss;
-        oss << "Services offered by the car service:\n";
+        oss << "Услуги автосервиса:\n";
         for (size_t i = 0; i < services.size(); ++i) {
             oss << (i + 1) << ". " << services[i]->getDescription() << "\n";
         }
@@ -34,7 +34,7 @@ namespace CarService {
 
     std::string CarServiceManager::getCarsList() const {
         std::ostringstream oss;
-        oss << "Cars in the car service:\n";
+        oss << "Автомобили в автосервисе:\n";
         for (size_t i = 0; i < cars.size(); ++i) {
             oss << (i + 1) << ". " << cars[i]->getInfo() << "\n";
         }
@@ -61,14 +61,14 @@ namespace CarService {
         for (const auto& car : cars) {
             if (car->getLicensePlate() == licensePlate) {
                 std::ostringstream oss;
-                oss << "Car Information:\n";
+                oss << "Информация об автомобиле:\n";
                 oss << car->getInfo() << "\n";
-                oss << "Problems:\n";
+                oss << "Проблемы:\n";
                 auto problems = car->getProblems();
                 for (size_t i = 0; i < problems.size(); ++i) {
                     oss << "  " << (i + 1) << ". " << problems[i] << "\n";
                 }
-                oss << "Services provided:\n";
+                oss << "Выполненные услуги:\n";
                 auto services = car->getServices();
                 for (size_t i = 0; i < services.size(); ++i) {
                     oss << "  " << (i + 1) << ". " << services[i]->getDescription() << "\n";
@@ -76,7 +76,7 @@ namespace CarService {
                 return oss.str();
             }
         }
-        return "Car not found.";
+        return "Автомобиль не найден.";
     }
 
     std::string CarServiceManager::getEmployeeWorkReport(const std::string& employeeName, std::time_t startDate, std::time_t endDate) const {
@@ -85,7 +85,7 @@ namespace CarService {
                 return employee->getWorkReport(startDate, endDate);
             }
         }
-        return "Employee not found.";
+        return "Сотрудник не найден.";
     }
 
     double CarServiceManager::calculateClientCost(const std::string& clientName) const {

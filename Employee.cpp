@@ -63,16 +63,16 @@ namespace CarService {
         ctime_s(startDateStr, sizeof(startDateStr), &startDate);
         ctime_s(endDateStr, sizeof(endDateStr), &endDate);
         
-        oss << "Employee: " << name << " (Specialization: " << specialization << ")\n";
-        oss << "Period: " << startDateStr << " to " << endDateStr;
-        oss << "Cars serviced: " << records.size() << "\n";
-        oss << "Total hours worked: " << getTotalHoursWorked(startDate, endDate) << "\n";
-        oss << "Work details:\n";
+        oss << "Сотрудник: " << name << " (Специализация: " << specialization << ")\n";
+        oss << "Период: " << startDateStr << " по " << endDateStr;
+        oss << "Авто обслужено: " << records.size() << "\n";
+        oss << "Всего часов: " << getTotalHoursWorked(startDate, endDate) << "\n";
+        oss << "Детали работ:\n";
         
         for (const auto& record : records) {
-            oss << "  - Car: " << record.car->getInfo() 
-                << ", Service: " << record.service->getName()
-                << ", Hours: " << record.hoursWorked << "\n";
+            oss << "  - Авто: " << record.car->getInfo() 
+                << ", Услуга: " << record.service->getName()
+                << ", Часы: " << record.hoursWorked << "\n";
         }
         
         return oss.str();

@@ -7,12 +7,12 @@ namespace CarService {
     }
 
     std::string WashingService::getDescription() const {
-        std::string type = dryCleaning ? "Dry Cleaning" : "Regular Washing";
-        return "Washing Service: " + name + " (Type: " + type + ", Price: " + std::to_string(price) + ")";
+        std::string type = dryCleaning ? "Химчистка" : "Обычная мойка";
+        return "Услуга мойки: " + name + " (Тип: " + type + ", Цена: " + std::to_string(price) + ")";
     }
 
     std::string WashingService::getServiceType() const {
-        return "Washing";
+        return "Мойка";
     }
 
     bool WashingService::isDryCleaningService() const {
