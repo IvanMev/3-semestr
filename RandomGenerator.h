@@ -13,7 +13,7 @@ namespace miit::algebra
         mutable std::mt19937 generator;
 
     public:
-        RandomGenerator(int min, int max);
+        RandomGenerator(const int min,const int max);
         int generate() const override;
     };
 }

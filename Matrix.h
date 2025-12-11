@@ -32,7 +32,7 @@ namespace miit::algebra
 
         size_t get_size() const;
         std::string to_string() const;
-        void resize(size_t new_size);
+        void resize(const size_t new_size);
 
         T* get_data() { return data; }
         const T* get_data() const { return data; }
@@ -41,7 +41,7 @@ namespace miit::algebra
         void fill(Generator& gen);
 
     private:
-        void copy_data(const T* source, T* destination, size_t count);
+        void copy_data(const T* source, const T* destination, const size_t count);
     };
 
 }
