@@ -11,7 +11,7 @@ namespace miit::algebra
         Generator* generator;
 
     public:
-        Exercise(size_t size, Generator* gen);
+        Exercise(const size_t size, Generator* gen);
         virtual ~Exercise() = default;
 
         virtual void SolveTask() = 0;
