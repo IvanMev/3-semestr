@@ -36,7 +36,7 @@ int main() {
         manager.addService(service);
     }
 
-    std::cout << "=== Коллекция услуг (демо полиморфизма) ===" << std::endl;
+    std::cout << "=== Коллекция услуг (полиморфизм) ===" << std::endl;
     for (size_t i = 0; i < services.size(); ++i) {
         std::cout << "Service " << (i + 1) << ": " << services[i]->getDescription() << std::endl;
         std::cout << "  Type: " << services[i]->getServiceType() << std::endl;
