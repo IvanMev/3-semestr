@@ -32,11 +32,15 @@ namespace CarService {
         std::string getEmployeeWorkReport(const std::string& employeeName, std::time_t startDate, std::time_t endDate) const;
         double calculateClientCost(const std::string& clientName) const;
         
+        void initializeTestData();
+        
+        static std::vector<std::shared_ptr<Service>> createTestServices();
+        
     private:
-        std::vector<std::shared_ptr<Service>> services;
+        std::vector<std::shared_ptr<Service>> services; 
         std::vector<std::shared_ptr<Car>> cars;
-        std::vector<std::shared_ptr<Client>> clients;
-        std::vector<std::shared_ptr<Employee>> employees;
+        std::vector<std::shared_ptr<Client>> clients; 
+        std::vector<std::shared_ptr<Employee>> employees; 
     };
 
 }

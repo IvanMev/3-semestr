@@ -4,6 +4,9 @@ namespace CarService {
 
     Service::Service(const std::string& name, double price)
         : name(name), price(price) {
+        services.clear();
+        clients.clear();
+        employees.clear();
     }
 
     std::string Service::getName() const {

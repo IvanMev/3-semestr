@@ -78,5 +78,41 @@ namespace CarService {
         return oss.str();
     }
 
+    std::vector<std::shared_ptr<Employee>> Employee::createTestEmployees(
+        const std::vector<std::shared_ptr<Car>>& cars,
+        const std::vector<std::shared_ptr<Service>>& services) {
+        
+        std::vector<std::shared_ptr<Employee>> testEmployees;
+        
+        auto employee1 = std::make_shared<Employee>("Андрей Иванов", "Механик");
+        auto employee2 = std::make_shared<Employee>("Сергей Петров", "Маляр");
+        auto employee3 = std::make_shared<Employee>("Дмитрий Сидоров", "Детейлер");
+        
+        std::time_t now = std::time(nullptr);
+        std::time_t yesterday = now - 86400;
+        std::time_t lastWeek = now - 7 * 86400;
+        
+        if (cars.size() > 0 && services.size() > 0) {
+            employee1->addWorkRecord(cars[0], services[0], yesterday, 4.5);
+        }
+        if (cars.size() > 0 && services.size() > 1) {
+            employee1->addWorkRecord(cars[0], services[1], yesterday, 2.0);
+        }
+        
+        if (cars.size() > 1 && services.size() > 2) {
+            employee2->addWorkRecord(cars[1], services[2], lastWeek, 6.0);
+        }
+        
+        if (cars.size() > 2 && services.size() > 5) {
+            employee3->addWorkRecord(cars[2], services[5], now, 3.0);
+        }
+        
+        testEmployees.push_back(employee1);
+        testEmployees.push_back(employee2);
+        testEmployees.push_back(employee3);
+        
+        return testEmployees;
+    }
+
 }
 

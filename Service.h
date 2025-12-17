@@ -2,8 +2,12 @@
 
 #include <string>
 #include <memory>
+#include <vector>
 
 namespace CarService {
+
+    class Client;
+    class Employee;
 
     class Service {
     public:
@@ -22,6 +26,9 @@ namespace CarService {
     protected:
         std::string name;
         double price;
+        std::vector<std::shared_ptr<Service>> services; 
+        std::vector<std::shared_ptr<Client>> clients; 
+        std::vector<std::shared_ptr<Employee>> employees; 
     };
 
 }

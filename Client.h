@@ -20,6 +20,8 @@ namespace CarService {
         
         double getDiscountPercent() const;
         void setRegularStatus(bool isRegular);
+        
+        static std::vector<std::shared_ptr<Client>> createTestClients(const std::vector<std::shared_ptr<Car>>& cars);
 
     private:
         std::string name;

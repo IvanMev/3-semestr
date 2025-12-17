@@ -31,6 +31,10 @@ namespace CarService {
         double getTotalHoursWorked(std::time_t startDate, std::time_t endDate) const;
         
         std::string getWorkReport(std::time_t startDate, std::time_t endDate) const;
+        
+        static std::vector<std::shared_ptr<Employee>> createTestEmployees(
+            const std::vector<std::shared_ptr<Car>>& cars,
+            const std::vector<std::shared_ptr<Service>>& services);
 
     private:
         std::string name;

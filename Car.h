@@ -8,6 +8,7 @@
 namespace CarService {
 
     class Problem;
+    class Client;
 
     class Car {
     public:
@@ -24,7 +25,12 @@ namespace CarService {
         void addProblem(const std::string& problemDescription);
         std::vector<std::string> getProblems() const;
         
+        void setOwner(std::shared_ptr<Client> owner);
+        std::shared_ptr<Client> getOwner() const;
+        
         std::string getInfo() const;
+        
+        static std::vector<std::shared_ptr<Car>> createTestCars(const std::vector<std::shared_ptr<Service>>& services);
 
     private:
         std::string licensePlate;
@@ -33,6 +39,7 @@ namespace CarService {
         int year;
         std::vector<std::shared_ptr<Service>> services;
         std::vector<std::string> problems;
+        std::shared_ptr<Client> owner;
     };
 
 }

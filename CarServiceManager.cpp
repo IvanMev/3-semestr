@@ -1,4 +1,8 @@
 #include "CarServiceManager.h"
+#include "RepairService.h"
+#include "PaintingService.h"
+#include "WashingService.h"
+#include "TuningService.h"
 #include <sstream>
 #include <algorithm>
 
@@ -104,6 +108,43 @@ namespace CarService {
             }
         }
         return 0.0;
+    }
+
+    std::vector<std::shared_ptr<Service>> CarServiceManager::createTestServices() {
+        std::vector<std::shared_ptr<Service>> testServices;
+        
+        testServices.push_back(std::make_shared<RepairService>("Ремонт двигателя", 500.0, "Двигатель"));
+        testServices.push_back(std::make_shared<RepairService>("Ремонт тормозов", 300.0, "Тормоза"));
+        testServices.push_back(std::make_shared<PaintingService>("Полная покраска", 800.0, "Красный"));
+        testServices.push_back(std::make_shared<PaintingService>("Частичная покраска", 400.0, "Синий"));
+        testServices.push_back(std::make_shared<WashingService>("Стандартная мойка", 50.0, false));
+        testServices.push_back(std::make_shared<WashingService>("Химчистка", 150.0, true));
+        testServices.push_back(std::make_shared<TuningService>("Тюнинг двигателя", 600.0, "Производительность"));
+        testServices.push_back(std::make_shared<TuningService>("Тюнинг подвески", 450.0, "Управляемость"));
+        
+        return testServices;
+    }
+
+    void CarServiceManager::initializeTestData() {
+        auto testServices = createTestServices();
+        for (const auto& service : testServices) {
+            addService(service);
+        }
+        
+        auto testCars = Car::createTestCars(testServices);
+        for (const auto& car : testCars) {
+            addCar(car);
+        }
+        
+        auto testClients = Client::createTestClients(testCars);
+        for (const auto& client : testClients) {
+            addClient(client);
+        }
+        
+        auto testEmployees = Employee::createTestEmployees(testCars, testServices);
+        for (const auto& employee : testEmployees) {
+            addEmployee(employee);
+        }
     }
 
 }
