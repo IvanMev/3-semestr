@@ -12,6 +12,8 @@ namespace miit::algebra
         Task2Exercise(size_t size, Generator* gen, int k = 0);
         ~Task2Exercise() override = default;
         void SolveTask() override;
+        
+        static void Run();
 
     private:
         void insertKAfterEvenElements();

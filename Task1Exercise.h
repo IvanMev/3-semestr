@@ -9,6 +9,8 @@ namespace miit::algebra
         Task1Exercise(size_t size, Generator* gen);
         ~Task1Exercise() override = default;
         void SolveTask() override;
+        
+        static void Run();
 
     private:
         void replaceLastMultipleOfThree();

@@ -11,5 +11,7 @@ namespace miit::algebra
         void SolveTask() override;
 
         Matrix<int> createArrayM(const Matrix<int>& P);
+        
+        static void Run();
     };
 }
