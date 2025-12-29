@@ -7,6 +7,12 @@
 
 namespace miit::algebra
 {
+    enum class GeneratorType
+    {
+        Random = 1,
+        Constant = 2,
+        IStream = 3
+    };
     Task1Exercise::Task1Exercise(size_t size, Generator* gen)
         : Exercise(size, gen)
     {
@@ -33,12 +39,15 @@ namespace miit::algebra
             matrix[last_index] = 0;
         }
     }
+}
 
-    void Task1Exercise::Run()
+namespace miit::algebra
+{
+    void RunTask1()
     {
         std::cout << "\n=== Задача 1 ===" << std::endl;
         
-        size_t size;
+        size_t size = 0;
         std::cout << "Введите размер матрицы: ";
         std::cin >> size;
         
@@ -48,20 +57,20 @@ namespace miit::algebra
             return;
         }
         
-        int choice;
+        int choice = 0;
         std::cout << "\nВыберите генератор:" << std::endl;
-        std::cout << "1. Случайный генератор (Random)" << std::endl;
-        std::cout << "2. Генератор константы (Constant)" << std::endl;
-        std::cout << "3. Генератор из потока ввода (IStream)" << std::endl;
+        std::cout << static_cast<int>(GeneratorType::Random) << ". Случайный генератор (Random)" << std::endl;
+        std::cout << static_cast<int>(GeneratorType::Constant) << ". Генератор константы (Constant)" << std::endl;
+        std::cout << static_cast<int>(GeneratorType::IStream) << ". Генератор из потока ввода (IStream)" << std::endl;
         std::cout << "Ваш выбор: ";
         std::cin >> choice;
         
         std::unique_ptr<Generator> gen;
-        switch (choice)
+        switch (static_cast<GeneratorType>(choice))
         {
-        case 1:
+        case GeneratorType::Random:
         {
-            int min_val, max_val;
+            int min_val = 0, max_val = 0;
             std::cout << "Введите минимальное значение: ";
             std::cin >> min_val;
             std::cout << "Введите максимальное значение: ";
@@ -69,15 +78,15 @@ namespace miit::algebra
             gen = std::make_unique<RandomGenerator>(min_val, max_val);
             break;
         }
-        case 2:
+        case GeneratorType::Constant:
         {
-            int constant_value;
+            int constant_value = 0;
             std::cout << "Введите константное значение: ";
             std::cin >> constant_value;
             gen = std::make_unique<ConstantGenerator>(constant_value);
             break;
         }
-        case 3:
+        case GeneratorType::IStream:
         {
             gen = std::make_unique<IStreamGenerator>();
             break;

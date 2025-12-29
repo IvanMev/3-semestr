@@ -8,6 +8,12 @@
 
 namespace miit::algebra
 {
+    enum class GeneratorType
+    {
+        Random = 1,
+        Constant = 2,
+        IStream = 3
+    };
     Task3Exercise::Task3Exercise(size_t size)
         : Exercise(size, nullptr)
     {
@@ -16,8 +22,11 @@ namespace miit::algebra
     void Task3Exercise::SolveTask()
     {
     }
+}
 
-    Matrix<int> Task3Exercise::createArrayM(const Matrix<int>& P)
+namespace miit::algebra
+{
+    Matrix<int> createArrayM(const Matrix<int>& P)
     {
         Matrix<int> M(P.get_size());
         for (size_t i = 0; i < P.get_size(); ++i)
@@ -38,11 +47,11 @@ namespace miit::algebra
         return M;
     }
 
-    void Task3Exercise::Run()
+    void RunTask3()
     {
         std::cout << "\n=== Задача 3 ===" << std::endl;
         
-        size_t size;
+        size_t size = 0;
         std::cout << "Введите размер массива P: ";
         std::cin >> size;
         
@@ -53,20 +62,20 @@ namespace miit::algebra
         }
         
         Matrix<int> P(size);
-        int choice;
+        int choice = 0;
         std::cout << "\nВыберите генератор:" << std::endl;
-        std::cout << "1. Случайный генератор (Random)" << std::endl;
-        std::cout << "2. Генератор константы (Constant)" << std::endl;
-        std::cout << "3. Генератор из потока ввода (IStream)" << std::endl;
+        std::cout << static_cast<int>(GeneratorType::Random) << ". Случайный генератор (Random)" << std::endl;
+        std::cout << static_cast<int>(GeneratorType::Constant) << ". Генератор константы (Constant)" << std::endl;
+        std::cout << static_cast<int>(GeneratorType::IStream) << ". Генератор из потока ввода (IStream)" << std::endl;
         std::cout << "Ваш выбор: ";
         std::cin >> choice;
         
         std::unique_ptr<Generator> gen;
-        switch (choice)
+        switch (static_cast<GeneratorType>(choice))
         {
-        case 1:
+        case GeneratorType::Random:
         {
-            int min_val, max_val;
+            int min_val = 0, max_val = 0;
             std::cout << "Введите минимальное значение: ";
             std::cin >> min_val;
             std::cout << "Введите максимальное значение: ";
@@ -74,15 +83,15 @@ namespace miit::algebra
             gen = std::make_unique<RandomGenerator>(min_val, max_val);
             break;
         }
-        case 2:
+        case GeneratorType::Constant:
         {
-            int constant_value;
+            int constant_value = 0;
             std::cout << "Введите константное значение: ";
             std::cin >> constant_value;
             gen = std::make_unique<ConstantGenerator>(constant_value);
             break;
         }
-        case 3:
+        case GeneratorType::IStream:
         {
             gen = std::make_unique<IStreamGenerator>();
             break;
@@ -95,8 +104,7 @@ namespace miit::algebra
         P.fill(*gen);
         std::cout << "Массив P: " << P.to_string() << std::endl;
         
-        Task3Exercise task3(size);
-        Matrix<int> M = task3.createArrayM(P);
+        Matrix<int> M = createArrayM(P);
         std::cout << "Массив M: " << M.to_string() << std::endl;
     }
 }

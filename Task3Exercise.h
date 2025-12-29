@@ -9,9 +9,8 @@ namespace miit::algebra
         Task3Exercise(size_t size);
         ~Task3Exercise() override = default;
         void SolveTask() override;
-
-        Matrix<int> createArrayM(const Matrix<int>& P);
-        
-        static void Run();
     };
+
+    Matrix<int> createArrayM(const Matrix<int>& P);
+    void RunTask3();
 }

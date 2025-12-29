@@ -38,13 +38,13 @@ int main()
             switch (static_cast<TaskNumber>(choice))
             {
             case TaskNumber::Task1:
-                Task1Exercise::Run();
+                RunTask1();
                 break;
             case TaskNumber::Task2:
-                Task2Exercise::Run();
+                RunTask2();
                 break;
             case TaskNumber::Task3:
-                Task3Exercise::Run();
+                RunTask3();
                 break;
             case TaskNumber::Exit:
                 std::cout << "Выход из программы." << std::endl;

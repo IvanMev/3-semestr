@@ -7,12 +7,11 @@ namespace miit::algebra
     {
     public:
         Task1Exercise(size_t size, Generator* gen);
-        ~Task1Exercise() override = default;
-        void SolveTask() override;
-        
-        static void Run();
+        void SolveTask();
 
     private:
         void replaceLastMultipleOfThree();
     };
+
+    void RunTask1();
 }
