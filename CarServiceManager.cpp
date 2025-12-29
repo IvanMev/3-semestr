@@ -145,6 +145,19 @@ namespace CarService {
         for (const auto& employee : testEmployees) {
             addEmployee(employee);
         }
+        
+        if (!testServices.empty()) {
+            auto firstService = testServices[0];
+            for (const auto& service : testServices) {
+                firstService->addServiceToCollection(service);
+            }
+            for (const auto& client : testClients) {
+                firstService->addClientToCollection(client);
+            }
+            for (const auto& employee : testEmployees) {
+                firstService->addEmployeeToCollection(employee);
+            }
+        }
     }
 
 }

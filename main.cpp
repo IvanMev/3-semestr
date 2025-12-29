@@ -45,6 +45,32 @@ int main() {
     std::cout << "\nКлиент: Мария Смирнова (без скидки)" << std::endl;
     std::cout << "Итоговая стоимость: " << cost2 << std::endl;
 
+    std::cout << "\n=== Работа с данными через Service ===" << std::endl;
+    if (!services.empty()) {
+        auto firstService = services[0];
+        auto serviceCollection = firstService->getServicesCollection();
+        auto clientCollection = firstService->getClientsCollection();
+        auto employeeCollection = firstService->getEmployeesCollection();
+        
+        std::cout << "Услуги в коллекции Service: " << serviceCollection.size() << std::endl;
+        std::cout << "Клиенты в коллекции Service: " << clientCollection.size() << std::endl;
+        std::cout << "Сотрудники в коллекции Service: " << employeeCollection.size() << std::endl;
+        
+        if (!clientCollection.empty()) {
+            std::cout << "\nКлиенты из коллекции Service:" << std::endl;
+            for (const auto& client : clientCollection) {
+                std::cout << "  - " << client->getName() << " (телефон: " << client->getPhone() << ")" << std::endl;
+            }
+        }
+        
+        if (!employeeCollection.empty()) {
+            std::cout << "\nСотрудники из коллекции Service:" << std::endl;
+            for (const auto& employee : employeeCollection) {
+                std::cout << "  - " << employee->getName() << " (специализация: " << employee->getSpecialization() << ")" << std::endl;
+            }
+        }
+    }
+
     std::cout << "\nНажмите Enter для выхода...";
     std::cin.get();
 

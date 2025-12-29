@@ -22,6 +22,14 @@ namespace CarService {
         double getPrice() const;
 
         void setPrice(double price);
+        
+        void addServiceToCollection(std::shared_ptr<Service> service);
+        void addClientToCollection(std::shared_ptr<Client> client);
+        void addEmployeeToCollection(std::shared_ptr<Employee> employee);
+        
+        std::vector<std::shared_ptr<Service>> getServicesCollection() const;
+        std::vector<std::shared_ptr<Client>> getClientsCollection() const;
+        std::vector<std::shared_ptr<Employee>> getEmployeesCollection() const;
 
     protected:
         std::string name;
